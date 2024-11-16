@@ -8,6 +8,7 @@ class MembershipPolicy < ApplicationPolicy
   end
 
   def create?
+    p "User is admin #{membership&.admin?}"
     membership&.admin?
   end
 
@@ -26,6 +27,8 @@ class MembershipPolicy < ApplicationPolicy
   private
 
   def membership
-    record.organization.memberships.find_by(user:)
+    p "user value #{user.inspect}"
+    p "000000000000000000000 record #{record.organization.memberships.find_by(user_id: user.user_id)}"
+    record.organization.memberships.find_by(user_id: user.user_id)
   end
 end

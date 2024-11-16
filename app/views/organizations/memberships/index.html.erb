@@ -1,6 +1,7 @@
 <% content_for :title, "Memberships" %>
 
 <%= render PageComponent.new(title: "Memberships") do |component| %>
+  <%= @organization.name %>
   <% component.with_action_list do %>
     <%= link_to "New membership", new_organization_membership_path(@organization), class: "btn btn-primary" if policy(@organization.memberships.new).new? %>
   <% end %>
